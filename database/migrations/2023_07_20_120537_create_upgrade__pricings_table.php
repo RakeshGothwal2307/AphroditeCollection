@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subadmin_models', function (Blueprint $table) {
+        Schema::create('upgrade__pricings', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('email')->unique();            
-            $table->string('password');  
-            $table->string('mobile');  
-            $table->string('pro_img')->nullable();  
-            $table->string('status')->default('active');
-            $table->softDeletes();
+            $table->string('country');
+            $table->string('state');
+            $table->string('city');
+            $table->string('placement_cost');
+            $table->string('featured_ad_cost');
+            $table->string('animated_gif_cost');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subadmin_models');
+        Schema::dropIfExists('upgrade__pricings');
     }
 };

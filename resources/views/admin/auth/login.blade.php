@@ -18,12 +18,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
+  <div class="card card-outline card-warning">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h2"><b>Aphrodite</b>Collection</a>
+      <a href="../../index2.html" class="h2"><b style="color: #c58c02">Aphrodite</b>Collection</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      {{-- <p class="login-box-msg">Sign in to start your session</p> --}}
       {{-- dd(Hash::make('admin1234')) --}}
       @php
       //dd(Auth::user());
@@ -31,6 +31,7 @@
       <form action="{{route('admin.login')}}" method="post" name="adminlogin" class="adminlogin_form">
         @csrf
         <div class="input-group mb-3">
+          {{-- <label for="">Username or Email Address</label> --}}
           <input type="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -65,7 +66,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Log In</button>
           </div>
           <!-- /.col -->
         </div>
@@ -82,9 +83,9 @@
       </div> --}}
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
+      {{-- <p class="mb-1">
         <a href="{{route('admin.forgotpassword')}}">I forgot my password</a>
-      </p>      
+      </p>       --}}
     </div>
     <!-- /.card-body -->
   </div>

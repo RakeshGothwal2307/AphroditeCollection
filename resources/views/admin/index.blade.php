@@ -296,6 +296,13 @@
                 </li>
               </ul>
             </li>
+
+            <li class="nav-item">
+              <a href="{{route('upgrading_price')}}" class="nav-link {{ (Route::currentRouteName() == 'all_blog') ? 'active' : ''; }}">
+                <i class="nav-icon fa fa-money"></i>
+                <p>Upgrading Price</p>
+              </a>
+            </li>
             {{-- <li class="nav-item">
             <a href="{{route('allpageslist')}}" class="nav-link {{ (Route::currentRouteName() == 'allpageslist') ? 'active' : ''; }}">
               <i class="nav-icon fa fa-users"></i>

@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\SubadminController;
 use App\Http\Controllers\admin\BlogsController;
 use App\Http\Controllers\admin\PagesController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\UpgradingPriceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,5 +82,14 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('admin/pages/faq', [FAQController::class, 'faq'])->name('faq.index');
     Route::post('admin/pages/faq', [FAQController::class, 'store'])->name('faq.store');
     Route::get('admin/pages/faq_delete{id}', [FAQController::class, 'faq_delete'])->name('faq_delete');
-    Route::get('admin/pages/faq_edit', [FAQController::class, 'faq_edit'])->name('faq_edit');
+    Route::post('admin/pages/faq_edit', [FAQController::class, 'faq_edit'])->name('faq_edit');
+
+
+    Route::get('admin/pages/upgrading_price', [UpgradingPriceController::class, 'upgrading_price'])->name('upgrading_price');
+    Route::get('admin/dropdown', [UpgradingPriceController::class, 'index']);
+    Route::post('admin/fetch-states', [UpgradingPriceController::class, 'fetchState']);
+    Route::post('admin/fetch-cities', [UpgradingPriceController::class, 'fetchCity']);
+
+    Route::post('admin/pages/upgrading_price', [UpgradingPriceController::class, 'price_insert'])->name('admin.pricing');
+
 });

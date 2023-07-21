@@ -36,7 +36,10 @@ class FAQController extends Controller
 
     }
 
-    public function faq_edit($id){
-        
+    public function faq_edit(Request $request){
+        $update = FAQ::first();
+        $update->question = $request->question;
+        $update->answer = $request->answer;
+        $update->save();
     }
 }

@@ -17,10 +17,7 @@
       </div>
     </div>
   </div><!-- /.container-fluid -->
-</section>
-
-<!-- Main content -->
-<section class="content">
+  <hr>
 <div class="container-fluid">  
     <div class="row">
         <div class="col">    
