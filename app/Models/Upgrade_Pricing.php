@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\{City,State,Country};
 
-use App\Models\City;
+
 
 class Upgrade_Pricing extends Model
 {
     use HasFactory;
 
-    // protected $appends = ['states'];
+    
 
     protected $fillable=[
         'country',
@@ -24,10 +25,17 @@ class Upgrade_Pricing extends Model
     ];
 
 
-    // public function getStatesAttributes()
-    // {
-    //     $stateData = DB::table('states')->where('id',$this->state)->get();
-    //     return $stateData;
-    // }
+    public function city(){
+        
+        return $this->hasMany(City::class,'id','city');
+    }
+    public function state(){
+        
+        return $this->hasMany(State::class,'id','state');
+    }
+    public function country(){
+        
+        return $this->hasMany(Country::class,'id','country');
+    }
 
 }

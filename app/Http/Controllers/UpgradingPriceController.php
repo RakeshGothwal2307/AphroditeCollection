@@ -12,17 +12,14 @@ use Illuminate\Support\Facades\DB;
 
 class UpgradingPriceController extends Controller
 {
-    public function upgrading_price() {
-    $country = Country::all();
-    $all_price = Upgrade_pricing::all();
-    $country_name= DB::table('states')
-    ->join('upgrade__pricings', 'states.id', '=', 'upgrade__pricings.state')
-    ->get(['states.name','upgrade__pricings.*','cities.name']);
+    public function upgrading_price()
+    {
+        $country = Country::all();
+        $names = Upgrade_pricing::with('city')->with('state')->with('country')->get();
 
-        return view('admin.upgrades.upgrading_price',[
+        return view('admin.upgrades.upgrading_price', [
             'country' => $country,
-            'all_price'=>$all_price,
-            'country_name'=>$country_name,
+            'names' => $names,
         ]);
     }
 
@@ -31,20 +28,21 @@ class UpgradingPriceController extends Controller
     public function fetchState(Request $request)
     {
         $data['states'] = State::where("country_id", $request->country_id)
-                                ->get(["name", "id"]);
-  
+            ->get(["name", "id"]);
+
         return response()->json($data);
     }
 
     public function fetchCity(Request $request)
     {
         $data['cities'] = City::where("state_id", $request->state_id)
-                                    ->get(["name", "id"]);
-                                      
+            ->get(["name", "id"]);
+
         return response()->json($data);
     }
 
-    public function price_insert(Request $request){
+    public function price_insert(Request $request)
+    {
         $insert = new Upgrade_pricing;
         $insert->country = $request->country;
         $insert->state = $request->state;
@@ -56,7 +54,8 @@ class UpgradingPriceController extends Controller
         return redirect()->back();
     }
 
-    
-
-
+    public function upgeade_delete($id){
+        Upgrade_pricing::find($id)->delete();
+        return redirect()->back();
+    }
 }

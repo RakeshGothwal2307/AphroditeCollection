@@ -91,5 +91,5 @@ Route::group(['middleware' => ['auth']],function(){
     Route::post('admin/fetch-cities', [UpgradingPriceController::class, 'fetchCity']);
 
     Route::post('admin/pages/upgrading_price', [UpgradingPriceController::class, 'price_insert'])->name('admin.pricing');
-
+    Route::get('admin/upgeade_delete{id}', [UpgradingPriceController::class, 'upgeade_delete'])->name('upgeade_delete');
 });
